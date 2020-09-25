@@ -38,5 +38,3 @@ def lowest_terms(x):
 			return str(res[0][0]) + '/' + str(res[1][0])
 		else:
 			return '-'+str(res[0][0]) + '/' + str(res[1][0])
-
-
