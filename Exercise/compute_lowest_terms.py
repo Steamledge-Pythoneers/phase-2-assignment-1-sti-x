@@ -8,9 +8,6 @@ def lowest_terms(x):
 	result (list) - holds final result
 	"""
 	x = x.split('/')
-	cont = []
-	factors = []
-	result = []
 
 	# count identifies the number of negatives in the fraction to determine its sign
 	count = 0
@@ -22,8 +19,7 @@ def lowest_terms(x):
 			count += 1
 
 	# Converting strings to integers
-	for j in x:
-		cont.append(int(j))
+	cont = [int(i) for i in x]
 
 	# copy is a copy of the prepared input that wouldn't be altered
 	copy = cont[:]
@@ -31,9 +27,7 @@ def lowest_terms(x):
 	"""
 	Looping through the minimum value to obtain factors
 	"""
-	for i in range(min(cont)):
-		if min(cont) % (i + 1) == 0:
-			factors.append(i + 1)
+	factors = [i+1 for i in range(min(cont)) if min(cont) % (i+1) == 0]
 
 	# Reversing the list allows for dividing by larger common factors first before smaller ones
 	factors.reverse()
@@ -42,17 +36,15 @@ def lowest_terms(x):
 	Division by common factors
 	"""
 	for i in factors:
-		if min(cont) % i == 0 and max(cont) % i == 0:
-			cont[cont.index(min(cont))] = min(cont) / i
-			cont[cont.index(max(cont))] = max(cont) / i
+		if cont[0] % i == 0 and cont[1] % i == 0:
+			cont[0] = cont[0] / i
+			cont[1] = cont[1] / i
 
 	# Converting integers back to strings
-	for i in cont:
-		cont[cont.index(i)] = str(i)
+	cont = [str(i) for i in cont]
 
 	# Removing decimal points caused by division process
-	for i in cont:
-		result.append(i.split('.'))
+	result = [i.split('.') for i in cont]
 
 	"""
 	Using if conditions to handle division of and by zero and also to decide
