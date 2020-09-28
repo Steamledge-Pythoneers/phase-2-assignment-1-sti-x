@@ -13,7 +13,7 @@ def test_lowest_terms_irrational_negative_1():
 	assert(lowest_terms("20/-60") == "-1/3")
     
 def test_lowest_terms_irrational_negative_2():
-	assert(lowest_terms("-300/165") == "-12/7")
+	assert(lowest_terms("-300/165") == "-20/11")
 
 def test_lowest_terms_positive():
 	assert(lowest_terms("-12/-26") == "6/13")

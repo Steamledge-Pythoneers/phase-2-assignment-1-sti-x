@@ -2,11 +2,11 @@
 
 def lowest_terms(x):
 	"""
-		Returns fractions in their lowest indivisible terms.
-		cont (list) - container storing integer values
-		factors (list) - stores factors
-		result (list) - holds final result
-		"""
+	Returns fractions in their lowest indivisible terms.
+	cont (list) - container storing integer values
+	factors (list) - stores factors
+	result (list) - holds final result
+	"""
 	x = x.split('/')
 
 	# count identifies the number of negatives in the fraction to determine its sign
@@ -25,16 +25,16 @@ def lowest_terms(x):
 	copy = cont[:]
 
 	"""
-    Looping through the minimum value to obtain factors
-    """
-	factors = [i + 1 for i in range(min(cont)) if min(cont) % (i + 1) == 0]
+	Looping through the minimum value to obtain factors
+	"""
+	factors = [i+1 for i in range(min(cont)) if min(cont) % (i+1) == 0]
 
 	# Reversing the list allows for dividing by larger common factors first before smaller ones
 	factors.reverse()
 
 	"""
-    Division by common factors
-    """
+	Loopint through and dividing by common factors
+	"""
 	for i in factors:
 		if cont[0] % i == 0 and cont[1] % i == 0:
 			cont[0] = cont[0] / i
@@ -47,9 +47,9 @@ def lowest_terms(x):
 	result = [i.split('.') for i in cont]
 
 	"""
-    Using if conditions to handle division of and by zero and also to decide
-    return values
-    """
+	Using if conditions to handle division of and by zero and also to decide
+	return values
+	"""
 	if copy[1] == 0:
 		return 'Undefined'
 	elif copy[0] == 0:
@@ -58,4 +58,4 @@ def lowest_terms(x):
 		if count == 0 or count == 2:
 			return str(result[0][0]) + '/' + str(result[1][0])
 		else:
-			return '-' + str(result[0][0]) + '/' + str(result[1][0])
+			return '-'+str(result[0][0]) + '/' + str(result[1][0])
